@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  db:
+    image: postgres
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes: [
+      "./scraper:/app/scraper"
+    ]
+    depends_on:
+      - db
