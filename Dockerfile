@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 ADD scraper /app/scraper
 WORKDIR /app/scraper
 
-CMD ["python", "download.py"]
+CMD ["python", "scrape.py"]
