@@ -42,8 +42,8 @@ Once the source of images is agnostic and image storage is working, the project 
 
 The following is a short list of general performance improvements. Code files also contain more specific performance improvements.
 
-####Concurrency
+#### Concurrency
 The process of downloading an image and storing its data in the database could certainly be multi-threaded. Using a tool like [Celery](http://www.celeryproject.org/) we could offload the image-by-image code to separate threads. We would have to do some re-organization of the database code to account for possible race conditions, especially with the auto-incrementing primary key on the images table. Once race conditions are accounted for, the entire process would run much more quickly, especially on processors where eight or sixteen threads could execute at once.
 
-####Caching
+#### Caching
 As stated previously, we could add an ImageStore module that would save images to the local hard disk or other locations, eliminating the need to download them again. We could take this caching behavior one step further by linking image URLs to a JSON string in a caching server. So, in instances where users are working with many different data sources, some of which contain the same image URL many times, the EXIF data could be retrieved as a JSON string from the cache server, without ever having to download the URL or open the binary file in memory.
